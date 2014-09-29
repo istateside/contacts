@@ -38,3 +38,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'byebug'
 end
+
+gem 'addressable'
+gem 'rest-client'
