@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   def create
-    contact = Contact.new(params[:contact].permit(:name, :email, :user_id))
+    contact = Contact.new(contact_params)
     if contact.save
       render json: contact
     else
@@ -31,8 +31,14 @@ class ContactsController < ApplicationController
 
   def update
     contact = Contact.find(params[:id])
-    contact.update(params[:contact].permit(:name, :email, :user_id))
+    contact.update(contact_params)
 
     render json: contact
+  end
+
+  private
+
+  def contact_params
+    params[:contact].permit(:name, :email, :user_id)
   end
 end
